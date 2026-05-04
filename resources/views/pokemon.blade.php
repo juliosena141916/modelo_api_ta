@@ -66,6 +66,27 @@
                 <span>HT: {{ $pokemon['height'] / 10 }}m</span>
                 <span>WT: {{ $pokemon['weight'] / 10 }}kg</span>
             </div>
+
+            <div class="flex justify-around mt-4">
+                @foreach($evolutions as $evo)
+                    <div class="flex flex-col items-center">
+                        <img src="{{ $evo['sprite'] }}" class="w-20 h-20">
+                        <span class="text-[6px] pixel-font">{{ $evo['name'] }}</span>
+                    </div>
+                @endforeach
+            </div>
+
+            @foreach($pokemon['stats'] as $stat)
+            <div class="flex justify-between items-center text-[8px] pixel-font uppercase text-gray-700">
+                <span>{{ $stat['stat']['name'] }}</span>
+                <span>{{ $stat['base_stat'] }}</span>
+            </div>
+            <div class="w-full bg-gray-300 h-1 mb-2">
+                <div class="bg-blue-500 h-full" style="width: {{ ($stat['base_stat'] / 255) * 100 }}%"></div>
+            </div>
+            @endforeach
+
+
         </div>
 
         <div class="mt-6 flex flex-col items-center gap-4">
